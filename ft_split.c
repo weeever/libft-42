@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/17 13:29:29 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/17 18:18:28 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,18 @@ int	ft_count_word(char const *s, char c)
 	len = 0;
 	while (s[i] != '\0')
 	{
-		len = ft_super_len(s, c);
+		len = ft_super_len(((char *)s + i), c);
 		if (len != 0)
 		{
 			count++;
 			i += len;
 		}
-		i++;
+		else
+			i++;
 	}
 	return (count);
 }
-int	ft_malloc(char **result ,char const *s, char c)
+void	ft_malloc(char **result ,char const *s, char c)
 {
 	int len;
 	int i;
@@ -57,26 +58,55 @@ int	ft_malloc(char **result ,char const *s, char c)
 	len = 0;
 	while (s[i] != '\0')
 	{
-		len = ft_super_len(s, c);
+		len = ft_super_len(((char *)s + i), c);
 		if (len != 0)
 		{
-			
+			result[count] = malloc(sizeof(char) * (len + 1));
+			count++;
 			i += len;
 		}
-		i++;
+		else
+			i++;
 	}
 }
 char **ft_split(char const *s, char c)
 {
 	int i;
 	char **result;
-	int count;
-
-	count = ft_count_word(s, c);
+	int index;
+	int len;
+	int j;
+	
+	index = 0;
 	i = 0;
-
-	*result = malloc(sizeof(char *) * count); 
-	
-	while ()
-	
+	result = malloc(sizeof(char *) * index + 1); 
+	ft_malloc(result, s, c);
+	while (s[i] != '\0')
+	{
+		len = ft_super_len((s + i), c);
+		if (len != 0)
+		{
+			j = 0;
+			while (len-- != 0)
+				result[index][j++] = s[i++];
+			result[index++][j] = '\0';
+		}
+		else
+			i++;
+	}
+	result[index] = NULL;
+	return (result);
 }
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	int i;
+// 	char **res;
+// 	i = 0;
+// 	res = ft_split("test les copains", ' ');
+// 	while (res[i] != NULL)
+// 	{
+// 		printf("%s \n", res[i]);
+// 		i++;
+// 	}
+// }

@@ -6,7 +6,7 @@
 #    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/15 11:19:11 by tidebonl         ###   ########.fr        #
+#    Updated: 2025/10/17 17:47:26 by tidebonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,10 @@ SOURCES	  = ft_atoi.c \
 			ft_strrchr.c \
 			ft_tolower.c \
 			ft_memmove.c \
+			ft_strjoin.c \
+			ft_substr.c \
+			ft_strtrim.c \
+			ft_split.c \
 			ft_toupper.c
 
 MY_OBJECTS = $(SOURCES:.c=.o)
