@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/17 18:18:28 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:21:51 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 int	ft_super_len(char const *s, char c)
 {
-	int i;
-		
+	int	i;
+
 	i = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			return(i);
+			return (i);
 		i++;
 	}
 	return (i);
 }
+
 int	ft_count_word(char const *s, char c)
 {
-	int len;
-	int i;
-	int count;
+	int	len;
+	int	i;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -47,11 +48,26 @@ int	ft_count_word(char const *s, char c)
 	}
 	return (count);
 }
-void	ft_malloc(char **result ,char const *s, char c)
+
+void	ft_free(int count, char **result)
 {
-	int len;
-	int i;
-	int count;
+	int	i;
+
+	i = 0;
+	count = count - 1;
+	while (count != 0)
+	{
+		free(result[count]);
+		count--;
+	}
+	free(result);
+}
+
+int	ft_malloc(char **result, char const *s, char c)
+{
+	int	len;
+	int	i;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -62,25 +78,32 @@ void	ft_malloc(char **result ,char const *s, char c)
 		if (len != 0)
 		{
 			result[count] = malloc(sizeof(char) * (len + 1));
+			if (!result[count])
+			{
+				ft_free(count, result);
+				return (1);
+			}
 			count++;
 			i += len;
 		}
 		else
 			i++;
 	}
+	return (0);
 }
-char **ft_split(char const *s, char c)
+
+char	**ft_split(char const *s, char c)
 {
-	int i;
-	char **result;
-	int index;
-	int len;
-	int j;
-	
+	int		i;
+	int		index;
+	int		len;
+	int		j;
+	char	**result;
+
 	index = 0;
 	i = 0;
-	result = malloc(sizeof(char *) * index + 1); 
-	ft_malloc(result, s, c);
+	result = malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
+	j = ft_malloc(result, s, c);
 	while (s[i] != '\0')
 	{
 		len = ft_super_len((s + i), c);
@@ -97,16 +120,3 @@ char **ft_split(char const *s, char c)
 	result[index] = NULL;
 	return (result);
 }
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	int i;
-// 	char **res;
-// 	i = 0;
-// 	res = ft_split("test les copains", ' ');
-// 	while (res[i] != NULL)
-// 	{
-// 		printf("%s \n", res[i]);
-// 		i++;
-// 	}
-// }
