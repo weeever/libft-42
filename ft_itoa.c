@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:15:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/18 12:21:52 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:44:59 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_malloc(int n, char *res, int *i)
 	if (n == 0)
 	{
 		(*i) = 2;
-		res = malloc(sizeof(char) * 2);
+		res = malloc(sizeof(char) * (*i));
 		return (res);
 	}
 	if (n < 0)
@@ -47,14 +47,13 @@ char	*ft_itoa(int n)
 	i = 0;
 	res = ft_malloc(n, res, &i);
 	j = i;
-	i = i - 1;
 	if (n < 0)
 	{
 		n = (n * -1);
 		res[j] = '-';
 		j++;
 	}
-	while (i != 0)
+	while (i - 1 < 0)
 	{
 		if (n >= 10)
 		{
@@ -75,7 +74,7 @@ int	main(void)
 {
 	char *res;
 	
-	res = ft_itoa(124);
+	res = ft_itoa(12);
 	printf("%s", res);
     
 }
