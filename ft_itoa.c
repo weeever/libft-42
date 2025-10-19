@@ -1,27 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 11:15:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/18 12:44:59 by tidebonl         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_malloc(int n, char *res, int *i)
+static char	*ft_malloc(int n, char *res, int *i)
 {
-	int tmp;
+	int	tmp;
 
-	if (n == 0)
-	{
-		(*i) = 2;
-		res = malloc(sizeof(char) * (*i));
-		return (res);
-	}
 	if (n < 0)
 	{
 		tmp = (n * -1);
@@ -38,43 +20,54 @@ char	*ft_malloc(int n, char *res, int *i)
 	return (res);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_write(int i, int n, char *res)
 {
-	int i;
-	char *res;
-	int j;
+	int	sign;
 
-	i = 0;
-	res = ft_malloc(n, res, &i);
-	j = i;
+	sign = 0;
 	if (n < 0)
 	{
 		n = (n * -1);
-		res[j] = '-';
-		j++;
+		sign = 1;
 	}
-	while (i - 1 < 0)
+	while (i != 0)
 	{
 		if (n >= 10)
 		{
-			res[i--] = ((n % 10) + 48);
+			res[i - 1] = (n % 10) + '0';
 			n = (n / 10);
 		}
 		else
-		{
-			res[i--] = (n + 48);
-			n = 0;
-		}
+			res[i - 1] = (n + 48);
+		i--;
 	}
-	res[j] = '\0';
+	if (sign != 0)
+		res[i] = '-';
 	return (res);
 }
-#include <stdio.h>
-int	main(void)
+
+char	*ft_itoa(int n)
 {
-	char *res;
-	
-	res = ft_itoa(12);
-	printf("%s", res);
-    
+	int		i;
+	char	*res;
+	char	*tmp;
+
+	i = 0;
+	if (n == 0)
+	{
+		tmp = "0";
+		res = ft_strdup(tmp);
+		return (res);
+	}
+	else if (n == -2147483648)
+	{
+		tmp = "-2147483648";
+		res = ft_strdup(tmp);
+		return (res);
+	}
+	res = 0;
+	res = ft_malloc(n, res, &i);
+	ft_write(i, n, res);
+	res[i] = '\0';
+	return (res);
 }

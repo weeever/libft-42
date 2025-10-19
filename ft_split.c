@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/18 12:21:51 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/19 09:57:22 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ int	ft_count_word(char const *s, char c)
 
 void	ft_free(int count, char **result)
 {
-	int	i;
-
-	i = 0;
 	count = count - 1;
 	while (count != 0)
 	{
