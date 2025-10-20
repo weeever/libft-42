@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 09:41:00 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/20 10:51:00 by tidebonl         ###   ########.fr       */
+/*   Created: 2025/10/20 10:24:55 by tidebonl          #+#    #+#             */
+/*   Updated: 2025/10/20 10:51:47 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putchar_fd(char c, int fd)
 {
-	int		i;
-	char	*res;
-
-	i = 0;
-	res = ft_strdup(s);
-	while (res[i] != '\0')
-	{
-		res[i] = f(i, res[i]);
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	write (fd, &c, 1);
 }

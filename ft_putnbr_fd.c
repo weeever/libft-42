@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 09:41:00 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/20 10:51:00 by tidebonl         ###   ########.fr       */
+/*   Created: 2025/10/20 10:33:42 by tidebonl          #+#    #+#             */
+/*   Updated: 2025/10/20 10:52:11 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	char	*res;
-
-	i = 0;
-	res = ft_strdup(s);
-	while (res[i] != '\0')
+	if (n == -2147483648)
 	{
-		res[i] = f(i, res[i]);
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	res[i] = '\0';
-	return (res);
+	else if (n == 2147483647)
+	{
+		write(fd, "2147483647", 10);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n >= 10)
+	{
+		ft_putchar_fd((n / 10) + '0', fd);
+		ft_putnbr_fd((n % 10), fd);
+	}
+	else
+		ft_putchar_fd((n + '0'), fd);
 }
