@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:36:53 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/20 10:34:52 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:01:58 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,11 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+
+typedef struct list
+{
+	char	*content;
+	char	*member;
+	char 	*next;
+}	t_list;
 #endif
