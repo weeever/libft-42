@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
+#    By: weeever <weeever@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/21 18:23:13 by tidebonl         ###   ########.fr        #
+#    Updated: 2025/10/21 21:24:04 by weeever          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-INCLUDES = libft.h
+INCLUDES = .libft.h
 
 SOURCES	  = ft_atoi.c \
 			ft_bzero.c \
@@ -54,7 +54,9 @@ BONUS	  = ft_lstnew_bonus.c \
 			ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c \
 			ft_lstadd_back_bonus.c \
-			ft_lstdelone_bonus.c
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c
 
 MY_OBJECTS = $(SOURCES:.c=.o)
 
