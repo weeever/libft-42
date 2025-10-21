@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:36:53 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/21 12:53:15 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:22:26 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 

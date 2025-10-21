@@ -6,7 +6,7 @@
 #    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/21 13:30:16 by tidebonl         ###   ########.fr        #
+#    Updated: 2025/10/21 18:23:13 by tidebonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ BONUS	  = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c \
-			ft_lstadd_back_bonus.c
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c
 
 MY_OBJECTS = $(SOURCES:.c=.o)
 
