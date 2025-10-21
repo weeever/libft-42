@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:36:53 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/20 11:01:58 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/21 12:53:15 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdint.h>
 # include <limits.h>
 # include <unistd.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 unsigned int	ft_strlen(const char *str);
 int				ft_atoi(const	char *str);
@@ -29,6 +35,7 @@ int				ft_tolower(int src);
 int				ft_toupper(int src);
 int				ft_strncmp(const char *str,	const char *str2, size_t lenght);
 int				ft_memcmp(const void *pt1, const void *pt2, size_t size);
+int				ft_lstsize(t_list *lst);
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 void			*ft_memchr(const void *memblock, int search, size_t size);
@@ -37,6 +44,7 @@ void			*ft_memset(void *s, int c, size_t n);
 void			*ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t elementCount, size_t elementSize);
 void			*ft_memmove(void *dest, const void *src, size_t n);
+void			ft_lstadd_front(t_list **lst, t_list *new);
 char			*ft_strchr(const char *str, int to_find);
 char			*ft_strdup(const	char *source);
 char			*ft_strnstr(const	char *str, const char *to_find, size_t len);
@@ -52,11 +60,8 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+void			ft_lstadd_back(t_list **lst, t_list *new);
+t_list			*ft_lstnew(void *content);
+t_list			*ft_lstlast(t_list *lst);
 
-typedef struct list
-{
-	char	*content;
-	char	*member;
-	char 	*next;
-}	t_list;
 #endif

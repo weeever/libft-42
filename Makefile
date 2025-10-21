@@ -6,7 +6,7 @@
 #    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/20 10:34:31 by tidebonl         ###   ########.fr        #
+#    Updated: 2025/10/21 13:30:16 by tidebonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,15 @@ SOURCES	  = ft_atoi.c \
 			ft_putnbr_fd.c \
 			ft_toupper.c
 
+BONUS	  = ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c
+
 MY_OBJECTS = $(SOURCES:.c=.o)
+
+MY_BONUS = $(BONUS:.c=.o)
 
 CFLAGS += -Wall -Werror -Wextra -I $(INCLUDES)
 
@@ -58,11 +66,14 @@ all: $(NAME)
 $(NAME): $(MY_OBJECTS)
 	ar rcs -o $(NAME) $(MY_OBJECTS)
 
+bonus: $(MY_BONUS)
+	ar rcs -o $(NAME) $(MY_BONUS)
+
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(MY_OBJECTS)
+	rm -f $(MY_OBJECTS) $(MY_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
