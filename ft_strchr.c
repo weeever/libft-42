@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:56:23 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 12:15:56 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:50:22 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*ft_strchr(const char *str, int to_find)
 	cast = (char)to_find;
 	result = (char *)str;
 	i = 0;
-
 	while (result[i] != '\0')
 	{
 		if (result[i] == cast && cast != 0)

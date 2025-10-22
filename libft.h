@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:36:53 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 11:22:35 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:53:18 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int				ft_toupper(int src);
 int				ft_strncmp(const char *str,	const char *str2, size_t lenght);
 int				ft_memcmp(const void *pt1, const void *pt2, size_t size);
 int				ft_lstsize(t_list *lst);
-size_t			ft_strlcat(char *dest, const char *src, size_t size);
-size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 void			*ft_memchr(const void *memblock, int search, size_t size);
 void			*ft_memcpy(void *dest, const void *src, size_t size);
 void			*ft_memset(void *s, int c, size_t n);
@@ -66,8 +64,10 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+size_t			ft_strlcat(char *dest, const char *src, size_t size);
+size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
-
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 #endif

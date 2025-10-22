@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 09:29:06 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 17:12:54 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:50:01 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*tmp;
 	t_list	*second;
 
-	if(lst)
+	if (lst)
 	{
 		second = malloc((sizeof lst));
 		if (second == NULL)
-			return(NULL);
+			return (NULL);
 		while (lst)
 		{
 			tmp = lst->content;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 17:57:57 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:48:24 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ static int	ft_malloc(char **result, char const *s, char c)
 		else
 			i++;
 	}
-	return (0);
+	return (-1);
 }
 
 static char	**ft_write(char const *s, char c, char **result)
 {
 	int	i;
 	int	len;
-	int index;
-	int j;
+	int	index;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -111,13 +111,12 @@ char	**ft_split(char const *s, char c)
 	if (!result)
 		return (NULL);
 	j = ft_malloc(result, s, c);
-	if (j != 0)
+	if (j != -1)
 	{
-		j = j - 1;
-		while (j != 0)
+		while (j > 0)
 		{
-			free(result[j]);
 			j--;
+			free(result[j]);
 		}
 		free(result);
 		return (NULL);
@@ -125,17 +124,3 @@ char	**ft_split(char const *s, char c)
 	result = ft_write(s, c, result);
 	return (result);
 }
-
-// int	main(void)
-// {
-// 	char **result;
-
-// 	result = ft_split("hello!",  ' ');
-// 	int i = 0;
-
-// 	while (result[i] != NULL)
-// 	{
-// 		printf("%s", result[i]);
-// 		i++;
-// 	}
-// }
