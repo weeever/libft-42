@@ -6,13 +6,13 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 12:57:04 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:57:57 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_super_len(char const *s, char c)
+static int	ft_super_len(char const *s, char c)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_super_len(char const *s, char c)
 	return (i);
 }
 
-int	ft_count_word(char const *s, char c)
+static int	ft_count_word(char const *s, char c)
 {
 	int	len;
 	int	i;
@@ -34,7 +34,6 @@ int	ft_count_word(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	len = 0;
 	while (s[i] != '\0')
 	{
 		len = ft_super_len(((char *)s + i), c);
@@ -49,35 +48,23 @@ int	ft_count_word(char const *s, char c)
 	return (count);
 }
 
-void	ft_free(int count, char **result)
-{
-	count = count - 1;
-	while (count != 0)
-	{
-		free(result[count]);
-		count--;
-	}
-	free(result);
-}
-
-int	ft_malloc(char **result, char const *s, char c)
+static int	ft_malloc(char **result, char const *s, char c)
 {
 	int	len;
 	int	i;
-	int	count;
+	int	index;
 
-	count = 0;
+	index = 0;
 	i = 0;
-	len = 0;
 	while (s[i] != '\0')
 	{
 		len = ft_super_len(((char *)s + i), c);
 		if (len != 0)
 		{
-			result[count] = malloc(sizeof(char) * (len + 1));
-			if (!result[count])
-				return (count);
-			count++;
+			result[index] = malloc(sizeof(char) * (len + 1));
+			if (result[index] == NULL)
+				return (index);
+			index++;
 			i += len;
 		}
 		else
@@ -86,27 +73,19 @@ int	ft_malloc(char **result, char const *s, char c)
 	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_write(char const *s, char c, char **result)
 {
-	int		i;
-	int		index;
-	int		len;
-	int		j;
-	char	**result;
+	int	i;
+	int	len;
+	int index;
+	int j;
 
-	if (s == NULL)
-		return (NULL);
-	index = 0;
+	j = 0;
 	i = 0;
-	result = malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
-	if (!result)
-		return (NULL);
-	j = ft_malloc(result, s, c);
-	if (j != 0)
-		return (NULL);
+	index = 0;
 	while (s[i] != '\0')
 	{
-		len = ft_super_len((s + i), c);
+		len = ft_super_len(((char *)s + i), c);
 		if (len != 0)
 		{
 			j = 0;
@@ -120,3 +99,43 @@ char	**ft_split(char const *s, char c)
 	result[index] = NULL;
 	return (result);
 }
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+	int		j;
+
+	if (s == NULL)
+		return (NULL);
+	result = malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
+	if (!result)
+		return (NULL);
+	j = ft_malloc(result, s, c);
+	if (j != 0)
+	{
+		j = j - 1;
+		while (j != 0)
+		{
+			free(result[j]);
+			j--;
+		}
+		free(result);
+		return (NULL);
+	}
+	result = ft_write(s, c, result);
+	return (result);
+}
+
+// int	main(void)
+// {
+// 	char **result;
+
+// 	result = ft_split("hello!",  ' ');
+// 	int i = 0;
+
+// 	while (result[i] != NULL)
+// 	{
+// 		printf("%s", result[i]);
+// 		i++;
+// 	}
+// }
