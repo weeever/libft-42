@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 09:38:09 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/20 09:38:10 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 11:16:40 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	if (n == 0)
 	{
-		tmp = "0";
-		res = ft_strdup(tmp);
+		res = ft_strdup("0");
 		return (res);
 	}
 	else if (n == -2147483648)
@@ -79,6 +78,8 @@ char	*ft_itoa(int n)
 	}
 	res = 0;
 	res = ft_malloc(n, res, &i);
+	if (res == NULL)
+		return (NULL);
 	ft_write(i, n, res);
 	res[i] = '\0';
 	return (res);

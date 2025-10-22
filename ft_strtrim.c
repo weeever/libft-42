@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:19:50 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/17 12:59:17 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 12:47:39 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,8 @@ static size_t	ft_malloc(size_t start, size_t end)
 	size_t	i;
 
 	i = 0;
-	while (start <= end)
-	{
+	while (start++ <= end)
 		i++;
-		start++;
-	}
 	return (i);
 }
 
@@ -85,18 +82,22 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	char	*result;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	if (s1[0] == '\0')
 	{
 		result = malloc(sizeof(char));
+		if (!result)
+			return (NULL);
 		result[0] = '\0';
 		return (result);
 	}
 	start = ft_counter(s1, set);
 	end = ft_reverse_counter(s1, set);
-	i = 0;
 	result = malloc(sizeof(char) * ft_malloc(start, end) + 1);
 	if (!result)
 		return (NULL);
+	i = 0;
 	while (start <= end)
 		result[i++] = s1[start++];
 	result[i] = '\0';

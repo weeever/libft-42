@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/17 12:03:18 by tidebonl          #+#    #+#             */
+/*   Updated: 2025/10/22 12:57:04 by tidebonl         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -65,10 +76,7 @@ int	ft_malloc(char **result, char const *s, char c)
 		{
 			result[count] = malloc(sizeof(char) * (len + 1));
 			if (!result[count])
-			{
-				ft_free(count, result);
-				return (1);
-			}
+				return (count);
 			count++;
 			i += len;
 		}
@@ -86,10 +94,16 @@ char	**ft_split(char const *s, char c)
 	int		j;
 	char	**result;
 
+	if (s == NULL)
+		return (NULL);
 	index = 0;
 	i = 0;
 	result = malloc(sizeof(char *) * (ft_count_word(s, c) + 1));
+	if (!result)
+		return (NULL);
 	j = ft_malloc(result, s, c);
+	if (j != 0)
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		len = ft_super_len((s + i), c);

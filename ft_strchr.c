@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:56:23 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/17 12:01:37 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/22 12:15:56 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ char	*ft_strchr(const char *str, int to_find)
 {
 	size_t		i;
 	char		*result;
+	char		cast;
 
+	cast = (char)to_find;
 	result = (char *)str;
 	i = 0;
-	if (!(to_find >= 0 && to_find <= 127))
-		return (result + i);
+
 	while (result[i] != '\0')
 	{
-		if (result[i] == to_find && to_find != 0)
+		if (result[i] == cast && cast != 0)
 			return (result + i);
 		i++;
 	}
-	if (to_find == 0)
+	if (cast == 0)
 		return (result + i);
-	return (0);
+	return (NULL);
 }

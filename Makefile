@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weeever <weeever@student.42.fr>            +#+  +:+       +#+         #
+#    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/21 21:24:04 by weeever          ###   ########.fr        #
+#    Updated: 2025/10/22 09:41:44 by tidebonl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ BONUS	  = ft_lstnew_bonus.c \
 			ft_lstadd_back_bonus.c \
 			ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c \
-			ft_lstiter_bonus.c
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
 
 MY_OBJECTS = $(SOURCES:.c=.o)
 
