@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 09:29:06 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 21:50:01 by weeever          ###   ########.fr       */
+/*   Created: 2025/10/23 09:53:50 by tidebonl          #+#    #+#             */
+/*   Updated: 2025/10/23 11:30:55 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*tmp;
 	t_list	*second;
+	t_list	*tmp;
 
-	if (lst)
+	second = NULL;
+	if (lst == NULL)
+		return (NULL);
+	while (lst != NULL)
 	{
-		second = malloc((sizeof lst));
-		if (second == NULL)
-			return (NULL);
-		while (lst)
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
 		{
-			tmp = lst->content;
-			f(tmp);
-			second = ft_lstnew(tmp);
-			if (second == NULL)
-			{
-				ft_lstclear(&second, del);
-				return (NULL);
-			}
-			ft_lstadd_back(&second, tmp);
-			second = second->next;
-			lst = lst->next;
+			ft_lstclear(&tmp, del);
+			return (NULL);
 		}
-		return (second);
+		ft_lstadd_back(&second, tmp);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (second);
 }
