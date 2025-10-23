@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:34:10 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/23 09:54:26 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/23 13:08:18 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	i = 0;
 	len = 0;
+	if (!size)
+		return (ft_strlen(src));
 	while (dest[len] != '\0' && len < size)
 		len++;
 	i = len;
