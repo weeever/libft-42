@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 09:53:50 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/23 11:30:55 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:43:22 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*second;
 	t_list	*tmp;
+	void	*toclear;
 
 	second = NULL;
 	if (lst == NULL)
 		return (NULL);
 	while (lst != NULL)
 	{
-		tmp = ft_lstnew(f(lst->content));
+		toclear = f(lst->content);
+		tmp = ft_lstnew(toclear);
 		if (!tmp)
 		{
-			ft_lstclear(&tmp, del);
+			del(toclear);
+			ft_lstclear(&second, del);
 			return (NULL);
 		}
 		ft_lstadd_back(&second, tmp);

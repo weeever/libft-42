@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+         #
+#    By: weeever <weeever@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 17:39:25 by tidebonl          #+#    #+#              #
-#    Updated: 2025/10/22 09:41:44 by tidebonl         ###   ########.fr        #
+#    Updated: 2025/10/23 16:46:30 by weeever          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ all: $(NAME)
 $(NAME): $(MY_OBJECTS)
 	ar rcs -o $(NAME) $(MY_OBJECTS)
 
-bonus: $(MY_BONUS)
-	ar rcs -o $(NAME) $(MY_BONUS)
+bonus: $(MY_BONUS) $(MY_OBJECTS)
+	ar rcs -o $(NAME) $(MY_OBJECTS) $(MY_BONUS)
 
 %.o: %.c
 	cc $(CFLAGS) -c $< -o $@
@@ -84,4 +84,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
