@@ -6,7 +6,7 @@
 /*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:58:28 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/28 13:18:33 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:52:32 by tidebonl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst && new)
+	if (lst || new)
 	{
-		new->next = *lst;
+		if (*lst)
+			new->next = *lst;
 		*lst = new;
 	}
 }
