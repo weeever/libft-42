@@ -6,7 +6,7 @@
 /*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:36:53 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 21:53:18 by weeever          ###   ########.fr       */
+/*   Updated: 2025/10/28 12:11:37 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdint.h>
 # include <limits.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <string.h>
 
 typedef struct s_list
 {
@@ -26,7 +24,6 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-unsigned int	ft_strlen(const char *str);
 int				ft_atoi(const	char *str);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
@@ -66,6 +63,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
+size_t			ft_strlen(const char *str);
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tidebonl <tidebonl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: weeever <weeever@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:19:50 by tidebonl          #+#    #+#             */
-/*   Updated: 2025/10/22 12:47:39 by tidebonl         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:09:15 by weeever          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 static int	ft_counter(char const *s1, char const *set)
 {
